@@ -1,0 +1,260 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(0deg, rgba(61, 104, 29, 1) 0%, rgba(34, 208, 64, 1) 100%);
+}
+
+h1 {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin: 0;
+  font-size: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 img {
+  margin-right: 10px;
+  height: 120px;
+  width: 170px;
+}
+
+#search-container {
+  padding: 16px;
+  text-align: center;
+}
+
+#search {
+  width: 80%;
+  max-width: 600px;
+  padding: 12px;
+  font-size: 52px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#category-container {
+  padding: 16px;
+  text-align: center;
+}
+
+#category-select {
+  padding: 12px;
+  font-size: 52px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBkPSJNOC4wNyA4Ljk0bC00LjUyLTQuNTRhLjUuNSAwIDAwLS43MS43MWw0LjggNC44YS41LjUgMCAwMC43MSAwbDQuOC00LjhhLjUuNSAwIDAwLS43MS0uNzFsLTQuNTIgNC41NEEuNS41IDAgMDE4LjA3IDguOTRaIiBmaWxsPSIjYjRiNGI0Ii8+PC9zdmc+');
+  background-repeat: no-repeat;
+  background-position: right 16px top 50%;
+  background-size: 16px;
+}
+
+#content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 95%;
+}
+
+.menu-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 95%;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+  width: 342px;
+  height: 405px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 16px;
+}
+
+.menu-item .info {
+  flex: 1;
+}
+
+.menu-item h3 {
+  margin: 0;
+  color: #333;
+  font-size: 42px;
+}
+
+.menu-item p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 38px;
+}
+
+.menu-item .price {
+  font-weight: bold;
+}
+
+.menu-item .price .price-value {
+  font-size: 1.5em;
+}
+
+.placeholder {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddd;
+  color: #666;
+  border-radius: 5px;
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+#footer {
+  background-color: #3d681d;
+  color: yellow;
+  text-align: center;
+  padding: 24px;
+  font-size: 50px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#footer a {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 42px;
+  color: white;
+  text-decoration: none;
+}
+
+#footer img {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+#Pedidos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#Pedidos img {
+  width: 1024px;
+  height: 470px;
+}
+
+@media (max-width: 768px) {
+  #search {
+    width: 90%;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-item img,
+  .placeholder {
+    width: 180px;
+    height: 180px;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .menu-item .info {
+    width: 100%;
+  }
+
+  .menu-item p {
+    font-size: 32px;
+  }
+
+  .menu-item h3 {
+    font-size: 34px;
+  }
+
+  #footer a {
+    font-size: 28px;
+  }
+
+  #footer img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-item {
+    width: 95%;
+    font-size: 22px;
+  }
+
+  #search {
+    width: 100%;
+    font-size: 22px;
+  }
+
+  #category-select {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+
+  .menu-item img,
+  .placeholder {
+    width: 200px;
+    height: 200px;
+  }
+
+  .menu-item p {
+    font-size: 26px;
+  }
+
+  .menu-item h3 {
+    font-size: 30px;
+  }
+
+  #footer a {
+    font-size: 24px;
+  }
+
+  #footer img {
+    width: 35px;
+    height: 35px;
+  }
+
+
+}

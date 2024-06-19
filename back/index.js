@@ -22,5 +22,7 @@ mongoose.connect(mongoChain).then(() => {
 
 const FoodRoute = require('./routes/food.route');
 const CategoryRoute = require('./routes/category.route');
+const UserRoute = require ('./routes/user.route')
 app.use('/api/food', FoodRoute);
 app.use('/api/category', CategoryRoute);
+app.use('/api/user', UserRoute);

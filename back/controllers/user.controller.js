@@ -22,7 +22,7 @@ function createToken(user) {
     id: user._id,
     exp: time().add(1, 'days').unix()
   }
-  return jwt.encoe(token, secret)
+  return jwt.encode(token, secret)
 }
 
 module.exports = { login }

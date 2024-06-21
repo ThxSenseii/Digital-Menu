@@ -1,0 +1,9 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form [formGroup]="form">
+    <input type="text" formControlName="user" id="username" placeholder="Username">
+    <input type="password" formControlName="password" id="password" placeholder="Password">
+  </form>
+    <button (click)="login()">Login</button>
+  <p id="error-message" class="error-message">Invalid username or password</p>
+</div>

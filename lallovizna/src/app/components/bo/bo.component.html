@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header">
+      <div>Tab categoría</div>
+      <input type="text" placeholder="Nueva categoría">
+      <button>Nueva categoría</button>
+  </div>
+  <div class="tabs">
+    @for(category of categories; track category) {
+      <div class="tab" [class.active]="category === currentCategory" (click)="changeCategory(category)">{{ category }}</div>
+    }
+  </div>
+  <div class="table-container">
+      <div class="table-header">
+          <div>Nombre</div>
+          <div>Descripción</div>
+          <div>URL imagen</div>
+          <div>Precio</div>
+          <div>Acciones</div>
+      </div>
+      @for(food of filteredFoods; track food.name) {
+        @if(!food.editing) {
+
+          <div class="table-row">
+            <div>{{ food.name }}</div>
+            <div>{{ food.description }}</div>
+            <div>{{ food.imageUrl }}</div>
+            <div>{{ food.price }}</div>
+            <div>
+              <button class="edit-button">Editar</button>
+              <button class="delete-button">Borrar</button>
+            </div>
+          </div> 
+        } @else {
+
+          <div class="table-row">
+            <input type="text" [placeholder]="food.name">
+            <div>{{ food.description }}</div>
+            <div>{{ food.imageUrl }}</div>
+            <div>{{ food.price }}</div>
+            <div>
+              <button class="edit-button">Guardar</button>
+              <button class="delete-button">Borrar</button>
+            </div>
+          </div>
+        }
+      }
+  </div>
+  <div class="footer">
+    <button (click)="addNewRow()">Nueva fila</button>
+  </div>
+</div>

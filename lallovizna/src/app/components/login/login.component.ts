@@ -25,16 +25,18 @@ export class LoginComponent {
               private readonly router: Router
   ) { }
 
-  login() {
+  /**
+   * Realiza el login
+   */
+  login(): void {
     if(this.form.invalid) return;
-    this.usersService.login(this.form.value.user, this.form.value.password).subscribe(
-      (res: any) => {
+    this.usersService.login(this.form.value.user, this.form.value.password).subscribe({
+      next: (res) => {
         sessionStorage.setItem('token', res.token);
         this.router.navigate(['/bo']);
-      },
-      (err) => {
+      }, error: (err) => {
         console.log(err);
       }
-    );
+    });
   }
 }

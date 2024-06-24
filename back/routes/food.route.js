@@ -8,5 +8,6 @@ const md = require('../middleware/auth.md');
 api.get('', foodController.getAll);
 api.get('/:category', foodController.getByCategory);
 api.post('', md.authorize, foodController.save);
+api.delete('/:foodId', md.authorize, foodController.remove);
 
 module.exports = api;

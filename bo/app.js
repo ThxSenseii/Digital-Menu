@@ -19,9 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginButton) {
         loginButton.addEventListener("click", login);
     }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
     const newCategoryButton = document.getElementById('new-category-button');
     const newRowButton = document.getElementById('new-row-button');
     const tabs = document.querySelector('.tabs');

@@ -1,16 +1,20 @@
 <div class="container">
   <div class="header">
-      <div>Tab categoría</div>
-      <input type="text" placeholder="Nueva categoría">
-      <button>Nueva categoría</button>
+    @if(creatingCategory) {
+      <input type="text" placeholder="Nueva categoría" [(ngModel)]="newCategory">
+      <button (click)="createCategory()">Guardar</button>
+    } @else {
+      <button (click)="setCreatingCategory()">Nueva categoría</button>
+    }
   </div>
   <div class="tabs">
     @for(category of categories; track category) {
-      <div class="tab" [class.active]="category === currentCategory" (click)="changeCategory(category)">{{ category }}</div>
+      <div class="tab" [class.active]="category.name === currentCategory!.name" (click)="changeCategory(category)">{{ category.name }}</div>
     }
   </div>
   <div class="table-container">
       <div class="table-header">
+        <div>Disponible</div>
           <div>Nombre</div>
           <div>Descripción</div>
           <div>URL imagen</div>
@@ -21,25 +25,27 @@
         @if(!food.editing) {
 
           <div class="table-row">
+            <input type="checkbox" [checked]="food.available" disabled>
             <div>{{ food.name }}</div>
             <div>{{ food.description }}</div>
-            <div>{{ food.imageUrl }}</div>
+            <div><a [href]="food.imageUrl" target="_blank">{{ food.imageUrl }}</a></div>
             <div>{{ food.price }}</div>
             <div>
-              <button class="edit-button">Editar</button>
-              <button class="delete-button">Borrar</button>
+              <button class="edit-button" (click)="edit(food)">Editar</button>
+              <button class="delete-button" (click)="delete(food)">Borrar</button>
             </div>
           </div> 
         } @else {
 
           <div class="table-row">
-            <input type="text" [placeholder]="food.name">
-            <div>{{ food.description }}</div>
-            <div>{{ food.imageUrl }}</div>
-            <div>{{ food.price }}</div>
+            <input type="checkbox" [checked]="food.available">
+            <input type="text" [value]="food.name">
+            <input type="text" [value]="food.description">
+            <input type="text" [value]="food.imageUrl">
+            <input type="number" [value]="food.price">
             <div>
-              <button class="edit-button">Guardar</button>
-              <button class="delete-button">Borrar</button>
+              <button class="edit-button" (click)="save(food)">Guardar</button>
+              <button class="delete-button" (click)="cancel(food)">Cancelar</button>
             </div>
           </div>
         }
@@ -47,5 +53,6 @@
   </div>
   <div class="footer">
     <button (click)="addNewRow()">Nueva fila</button>
+    <button class="delete-button" (click)="deleteCategory()">Eliminar categoría</button>
   </div>
 </div>

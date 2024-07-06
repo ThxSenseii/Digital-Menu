@@ -10,6 +10,9 @@
 <div id="category-container">
   <select id="category-select">
     <option value="">Platos Por Categoría</option>
+    @for(category of categories;track category._id){
+      <option [value]="category._id">{{category.name}}</option>
+    }
   </select>
 </div>
 <div id="content"></div>

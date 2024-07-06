@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../interfaces/category';
@@ -25,7 +25,10 @@ export class CategoriesService {
    * @returns Mensaje de aceptación
    */
   createCategory(category: string): Observable<BackInfo> {
-    return this.http.post<BackInfo>('http://localhost:3000/api/category', { name: category });
+    const headers:HttpHeaders = new HttpHeaders ({
+      Authorization: sessionStorage.getItem ('token')!
+    })
+    return this.http.post<BackInfo>('http://localhost:3000/api/category', { name: category }, {headers:headers});
   }
 
   /**
@@ -34,6 +37,9 @@ export class CategoriesService {
    * @returns Mensaje de aceptación
    */
   deleteCategory(category: string): Observable<BackInfo> {
-    return this.http.delete<BackInfo>(`http://localhost:3000/api/category/${category}`);
+    const headers:HttpHeaders = new HttpHeaders ({
+      Authorization: sessionStorage.getItem ('token')!
+    })
+    return this.http.delete<BackInfo>(`http://localhost:3000/api/category/${category}`, {headers:headers});
   }
 }

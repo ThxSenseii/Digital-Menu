@@ -10,21 +10,20 @@ function authorize (req, res, next) {
     return res.status(403).send({ message: 'No token' });
   }
   const token = req.headers.authorization.replace(/['"]+/g,'')
-  const payload = jwt.decode(token, secret);
+  const payload = jwt.decode(token, "Secreto");
 
   if (payload.exp <= moment().unix()) {
     return res.status(401).send({ message: 'Token expired' });
   }
 
-  User.findById(payload.id, (err, user) => {
+  User.findById(payload.id).then((user) => {
+    req.user = user;
+    next();
+  }).catch(err => {
     if (err) {
       return res.status(500).send({ message: err.message });
     }
-    if (!user) {
-      return res.status(404).send({ message: 'User not found' });
-    }
-    req.user = user;
-    next();
+    return res.status(404).send({ message: 'User not found' });
   });
 }
 

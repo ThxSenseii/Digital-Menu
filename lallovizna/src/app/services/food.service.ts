@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Food } from '../interfaces/food';
@@ -19,13 +19,22 @@ export class FoodService {
     return this.http.get<Food[]>('http://localhost:3000/api/food');
   }
 
+  getFoodsByCategory(category:string): Observable<Food[]> {
+    return this.http.get<Food[]>('http://localhost:3000/api/food/'+ category);
+  }
+
+  
+
   /**
    * Servicio para guardar una nueva comida o actualizar una existente
    * @param food Comida a guardar
    * @returns Mensaje de aceptación
    */
   saveFood(food: Food): Observable<BackInfo> {
-    return this.http.post<BackInfo>('http://localhost:3000/api/food', food);
+    const headers:HttpHeaders = new HttpHeaders ({
+      Authorization: sessionStorage.getItem ('token')!
+    })
+    return this.http.post<BackInfo>('http://localhost:3000/api/food', food, {headers:headers});
   }
 
   /**
@@ -34,6 +43,9 @@ export class FoodService {
    * @returns Mensaje de aceptación
    */
   deleteFood(id: string): Observable<BackInfo> {
-    return this.http.delete<BackInfo>(`http://localhost:3000/api/food/${id}`);
+    const headers:HttpHeaders = new HttpHeaders ({
+      Authorization: sessionStorage.getItem ('token')!
+    })
+    return this.http.delete<BackInfo>(`http://localhost:3000/api/food/${id}`, {headers:headers});
   }
 }

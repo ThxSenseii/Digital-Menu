@@ -94,6 +94,7 @@ export class BoComponent implements OnInit {
    * @param row Comida a guardar o actualizar
    */
   save(row: Food) {
+    console.log(row);
     this.foodService.saveFood(row).subscribe({
       next: (res) => {
         this.reload()

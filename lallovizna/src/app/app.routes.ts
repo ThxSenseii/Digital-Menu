@@ -10,7 +10,8 @@ export const routes: Routes = [
   }, {
     path: 'bo/login', component: LoginComponent
   },{
-    path: 'bo', component: BoComponent
+    path: 'bo', component: BoComponent , 
+    canActivate:[tokenGuard]
   }, {
     path: '', redirectTo: '/menu', pathMatch: 'full'
   }, {

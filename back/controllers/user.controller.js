@@ -14,7 +14,6 @@ function login(req, res) {
       else return res.status(403).send({message: 'Unauthorized'})
     })
   }).catch(err => {
-    console.log(err);
     return res.status(500).send({ message: err.message });
   });
 }

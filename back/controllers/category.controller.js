@@ -25,9 +25,9 @@ function remove(req, res) {
   Food.find({ category: categoryId }).then(foods => {
     foods.forEach(food => {
       food.remove();
-    }).then(() => {
+    })
       Category.findById(categoryId).then(category => {
-        category.remove().then(() => {
+        category.deleteOne({_id:categoryId}).then(() => {
           return res.status(200).send({ message: 'Categoría eliminada correctamente'});
         }).catch(err => {
           return res.status(500).send({ message: `Error al eliminar la categoría: ${err}` });
@@ -36,7 +36,6 @@ function remove(req, res) {
         return res.status(404).send({ message: `La categoría no existe: ${err}` });
       });
     });
-  })
 }
 
 module.exports = {

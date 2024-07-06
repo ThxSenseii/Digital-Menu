@@ -38,11 +38,11 @@
         } @else {
 
           <div class="table-row">
-            <input type="checkbox" [checked]="food.available">
-            <input type="text" [value]="food.name">
-            <input type="text" [value]="food.description">
-            <input type="text" [value]="food.imageUrl">
-            <input type="number" [value]="food.price">
+            <input type="checkbox" [(ngModel)]="food.available">
+            <input type="text" [(ngModel)]="food.name">
+            <input type="text" [(ngModel)]="food.description">
+            <input type="text" [(ngModel)]="food.imageUrl">
+            <input type="number" [(ngModel)]="food.price">
             <div>
               <button class="edit-button" (click)="save(food)">Guardar</button>
               <button class="delete-button" (click)="cancel(food)">Cancelar</button>

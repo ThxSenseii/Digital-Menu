@@ -21,7 +21,7 @@ function getByCategory(req, res) {
 
 function save(req, res) {
   let food = new Food(req.body);
-  if(food._id) {
+  if(req.body._id) {
     food.updateOne(food).then(() => {
       return res.status(200).send({ message: 'Plato actualizado correctamente'});
     }).catch(err => {
@@ -39,7 +39,7 @@ function save(req, res) {
 function remove(req, res) {
   let foodId = req.params.foodId;
   Food.findById(foodId).then(food => {
-    food.remove().then(() => {
+    food.deleteOne({_id:foodId}).then(() => {
       return res.status(200).send({ message: 'Plato eliminado correctamente'});
     }).catch(err => {
       return res.status(500).send({ message: `Error al eliminar el plato: ${err}` });

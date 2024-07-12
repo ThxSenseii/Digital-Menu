@@ -1,21 +1,37 @@
 <h1>
-  Carta La Llovizna
+  <img src="https://www.eturbanti.es/wp-content/uploads/2024/06/Pedidos_app.jpg" alt="Logo">
+  Carta Digital La Llovizna
 </h1>
+
 <div id="search-container">
-  <input type="text" id="search" placeholder="Buscar plato...">
+  <input type="text" id="search" placeholder="Buscar plato..." (input)="onInput($event)">
 </div>
+
 <div id="Pedidos">
   <img src="https://www.eturbanti.es/wp-content/uploads/2024/06/Pedidos_app.jpg" alt="Pedidos">
-</div>   
-<div id="category-container">
-  <select id="category-select">
-    <option value="">Platos Por Categoría</option>
-    @for(category of categories;track category._id){
-      <option [value]="category._id">{{category.name}}</option>
-    }
-  </select>
 </div>
-<div id="content"></div>
+
+<div id="category-container">
+  <select id="category-select" (change)="onCategoryChange($event)">
+    <option value="">Platos Por Categoría</option>
+    <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+  </select>
+  
+  <div id="content">
+    <div *ngFor="let food of filteredFoods; trackBy: trackByFood" class="menu-item">
+      <img [src]="food.imageUrl" alt="{{ food.name }}" *ngIf="food.imageUrl; else placeholder">
+      <ng-template #placeholder>
+        <div class="placeholder">No Image</div>
+      </ng-template>
+      <div class="info">
+        <h3>{{ food.name }}</h3>
+        <p>{{ food.description }}</p>
+        <div class="price">{{ food.price | currency }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="footer">
   <a href="https://www.facebook.com/LaLloviznaTascaCafeteria">
     <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" alt="Facebook">
